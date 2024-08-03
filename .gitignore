@@ -1,0 +1,6 @@
+# docker
+# git rm -r --cached .
+.DS_Store
+*.pdf
+*.exe
+*/*/data

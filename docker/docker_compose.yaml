@@ -1,0 +1,16 @@
+services:
+  template:
+    container_name: template
+    tty: true
+    build: .
+    working_dir: /root
+    volumes:
+      - ./data:/root/backup
+    networks:
+      - default
+    environment:
+      - TZ=Asia/Tokyo
+
+networks:
+  default:
+    driver: bridge
