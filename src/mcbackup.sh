@@ -70,7 +70,7 @@ function deletefile(){
 # Main
 if [ ! -d "${LOG_FILE}" ]; 
 then
-    touch "${LOG_FILE}"
+    touch "~/${LOG_FILE}"
 fi
 
 log INFO "Starting backup"
