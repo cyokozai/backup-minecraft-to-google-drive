@@ -7,7 +7,7 @@ set -o pipefail
 readonly datestr=$(date '+%Y%m%d%H%M%S')
 readonly DATA_DIR='minecraft/data'
 readonly BACKUP_DIR='minecraft/backups'
-readonly LOG_FILE='minecraft/logs/mcbackup.log'
+readonly LOG_FILE=$("minecraft/logs/mcbackup${datestr}.log")
 LOG_MSG=''
 
 function log() {
@@ -68,8 +68,11 @@ function deletefile(){
 }
 
 # Main
-if [ ! -d "${LOG_FILE}" ]; 
+if [ ! -d "~/${LOG_FILE}" ]; 
 then
+    mkdir -p ~/minecraft
+    mkdir -p ~/minecraft/backups
+    mkdir -p ~/minecraft/logs
     touch "~/${LOG_FILE}"
 fi
 
