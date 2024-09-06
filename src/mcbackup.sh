@@ -73,7 +73,7 @@ then
     mkdir -p ~/minecraft
     mkdir -p ~/minecraft/backups
     mkdir -p ~/minecraft/logs
-    touch "~/${LOG_FILE}"
+    touch ~/${LOG_FILE}
 fi
 
 log INFO "Starting backup"
