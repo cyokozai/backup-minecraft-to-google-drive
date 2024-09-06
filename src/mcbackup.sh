@@ -13,7 +13,7 @@ LOG_MSG=''
 function log() {
     local level="$1"
 
-    echo "${datestr} [$level] $*" >> $LOG_FILE
+    echo "${datestr} [$level] $*" >> ~/$LOG_FILE
     echo "${datestr} [$level] $*" >> $LOG_MSG
 
     return
