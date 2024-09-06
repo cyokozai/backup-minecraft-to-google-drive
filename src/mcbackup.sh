@@ -8,13 +8,11 @@ readonly datestr=$(date '+%Y%m%d%H%M%S')
 readonly DATA_DIR='minecraft/data'
 readonly BACKUP_DIR='minecraft/backups'
 readonly LOG_FILE="minecraft/logs/mcbackup-${datestr}.log"
-LOG_MSG=$datestr
 
 function log() {
     local level="$1"
 
     echo "${datestr} [$level] $*" >> ~/$LOG_FILE
-    echo "${datestr} [$level] $*" >> $LOG_MSG
 
     return
 }
@@ -26,7 +24,7 @@ function copyfile() {
     
     if [ -d "$src" ]; 
     then
-        eval "scp -i ~/.ssh/ed25519 -p 22 $user@denkettle:~/$src ~/$dest/backup-${datestr}"
+        eval "scp -i ~/.ssh/ed25519 -P 22 -r $user@hostname:~/$src ~/$dest/backup-${datestr}"
     else
         log ERROR "File $src does not exist"
         STATUS=1
@@ -38,7 +36,8 @@ function copyfile() {
 function compressfile() {
     local src="$1"
 
-    eval "tar czf /backup/backup-${datestr}.tar.gz $src/backup-${datestr}"
+    eval "tar czf ~/$src/backup-${datestr}.tar.gz ~/$src/backup-${datestr}"
+    rm -rf ~/$src/backup-${datestr}
 
     if [ $? -ne 0 ]
     then
@@ -80,7 +79,7 @@ log INFO "Starting backup"
 cd
 
 # Copy files
-copyfile DATA_DIR BACKUP_DIR 'cyokozai'
+copyfile DATA_DIR BACKUP_DIR 'username'
 
 # Compress files
 compressfile BACKUP_DIR
@@ -98,7 +97,7 @@ else
     SUBJECT=$(echo -e "[INFO] cms backup report")
 fi
 
-echo "$(cat ${LOG_MSG})" | mailx -s "${SUBJECT}" "yourmailaddress"
+echo "$(cat ${LOG_FILE})" | mailx -s "${SUBJECT}" "yourmailaddress"
 
 # Exit with status
 exit ${STATUS}
