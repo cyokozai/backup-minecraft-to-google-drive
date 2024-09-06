@@ -86,7 +86,7 @@ copyfile DATA_DIR BACKUP_DIR 'cyokozai'
 compressfile BACKUP_DIR
 
 # Delete old files
-deletefile "${BACKUP_DIR}/backup-"
+deletefile "~/${BACKUP_DIR}/backup-"
 
 # Send mail
 log INFO "Backup finished with status ${STATUS}"
