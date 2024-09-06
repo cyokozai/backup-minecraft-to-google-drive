@@ -5,6 +5,12 @@ DEAMON='mcbackup'
 set -e
 set -o pipefail
 
+sudo apt -y update
+sudo apt -y install openssh-client
+sudo apt -y install tar
+sudo apt -y install mailutils
+sudo apt -y install curl
+
 sudo mv ./src/mcbackup.sh /usr/local/bin/${DEAMON}
 sudo chmod +x /usr/local/bin/${DEAMON}
 source ~/.bashrc

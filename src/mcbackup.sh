@@ -71,9 +71,6 @@ function deletefile(){
 if [ ! -d "${LOG_FILE}" ]; 
 then
     touch "${LOG_FILE}"
-    sudo apt -y install tar
-    sudo apt -y install mailutils
-    sudo apt -y install curl
 fi
 
 log INFO "Starting backup"
