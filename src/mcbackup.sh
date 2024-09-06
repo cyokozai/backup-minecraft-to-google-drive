@@ -7,7 +7,7 @@ set -o pipefail
 readonly datestr=$(date '+%Y%m%d%H%M%S')
 readonly DATA_DIR='minecraft/data'
 readonly BACKUP_DIR='minecraft/backups'
-readonly LOG_FILE=$("minecraft/logs/mcbackup${datestr}.log")
+readonly LOG_FILE=$"minecraft/logs/mcbackup/${datestr}.log"
 LOG_MSG=''
 
 function log() {
