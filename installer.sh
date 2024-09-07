@@ -11,6 +11,10 @@ sudo apt -y install tar
 sudo apt -y install mailutils
 sudo apt -y install curl
 
+mkdir -p ~/minecraft
+mkdir -p ~/minecraft/backups
+mkdir -p ~/minecraft/logs
+
 sudo mv ./src/mcbackup.sh /usr/local/bin/${DEAMON}
 sudo chmod +x /usr/local/bin/${DEAMON}
 source ~/.bashrc
