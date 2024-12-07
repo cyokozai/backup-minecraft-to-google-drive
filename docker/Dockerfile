@@ -6,7 +6,7 @@ SHELL ["/bin/bash", "-c"]
 WORKDIR /root
 
 ARG lang="C"
-ARG dir="workdir"
+ARG dir="backup"
 
 ENV DEBIAN_FRONTEND = noninter active
 ENV TERM xterm
